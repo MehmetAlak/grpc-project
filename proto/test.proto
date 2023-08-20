@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./proto";//Buraya verdiğimiz dizin  proto derlendikten sonra makefile içerisinde belirtilen gen/proto dizine oluşturur
+
+service TestApi{
+  rpc Echo(ResponseRequest) returns (ResponseRequest) {}
+  rpc GetProducts(Empty) returns (ProductList) {}
+  rpc GetProduct(ProductId) returns (Product) {}
+}
+
+message ResponseRequest{
+  string msg = 1;
+}
+
+message Product{
+  int32 id = 1;
+  string title = 2;
+  string description = 3;
+  float price = 4;
+}
+
+message ProductList {
+  repeated Product product = 1;
+}
+
+message ProductId {
+  int32 id = 1;
+}
+
+message Empty {}
+

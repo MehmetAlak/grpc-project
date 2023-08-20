@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: usr_deneme
+      POSTGRES_PASSWORD: 1234567
+      POSTGRES_DB: app_deneme
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
